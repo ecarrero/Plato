@@ -1,0 +1,210 @@
+<core:FragmentDefinition
+    xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:uxap="sap.uxap"
+	xmlns:l="sap.ui.layout">
+	<uxap:ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<uxap:sections>
+			<uxap:ObjectPageSection titleUppercase="false" title="Sample Forms" fieldGroupIds="form">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="{i18n>finishTimeTabForm}" titleUppercase="false">
+						<f:SimpleForm id="SimpleFormChange354wide"
+							editable="true"
+							layout="ResponsiveGridLayout"
+							labelSpanXL="4"
+							labelSpanL="4"
+							labelSpanM="4"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="1"
+							emptySpanL="1"
+							emptySpanM="1"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false">
+							<f:content>
+								<Label text="{i18n>orderConfirmation}" />
+								<Input
+									type="Number"
+									required="true"
+									placeholder="{i18n>orderConfirmationPlaceholder}"
+									showSuggestion="true"					
+									suggest="handleOrderSuggestion"
+									value="{newObject>/ConfirmationGroup}"
+									liveChange="onLiveChange"
+									startSuggestion="3"
+									suggestionItemSelected="onSelectedOrder"
+									showTableSuggestionValueHelp="false"
+									suggestionRows="{orderConfirmation>/Z_C_ORDERCONFIRMATION}">
+									<suggestionColumns>
+										<Column
+											hAlign="Begin"
+											popinDisplay="Inline"
+											demandPopin="true">
+											<Label text="{i18n>columnConfirmationGrp}"/>
+										</Column>
+										<Column
+											hAlign="End"
+											popinDisplay="Inline"
+											demandPopin="true">
+											<Label text="{i18n>columnOrderID}"/>
+										</Column>
+										<Column
+											hAlign="End"
+											popinDisplay="Inline"
+											demandPopin="true">
+											<Label text="{i18n>columnOrderOperation}"/>
+										</Column>
+									</suggestionColumns>
+									<suggestionRows>
+										<ColumnListItem>
+											<cells>
+												<Label text="{orderConfirmation>ConfirmationGroup}"/>
+												<Label text="{orderConfirmation>OrderID}"/>
+												<Label text="{orderConfirmation>Operation}"/>
+											</cells>
+										</ColumnListItem>
+									</suggestionRows>
+								</Input>
+								<Label text="{i18n>timeEvent}" />
+								<DateTimePicker
+									required="true"
+									enabled="{view>/editMode}"
+									name="DTPFinish"
+									secondsStep="15"
+									placeholder="{i18n>placeholderDatePicker}"
+									value="{ 
+										parts: [
+											{path: 'newObject>/ConfirmedProcessingEndDate'},
+											{path: 'newObject>/ConfirmedProcessingEndTime'}
+										],
+										formatter: '.formatter.setDateTime'
+									}"
+									displayFormat="long"
+									valueFormat="long"
+									change="onChangeDate"
+									class="sapUiSmallMarginBottom"/>
+								<CheckBox text="{i18n>totalConfirmation}" selected="{newObject>/IsFinalConfirmation}" />
+								<Label text="{i18n>employees}" />
+								<Input
+									enabled="{view>/editMode}"
+									value="{newObject>/NumberOfEmployees}" 
+									type="Number"
+									class="sapUiSmallMarginBottom"
+									maxLength="8"
+									change="onChangeEmployeeNumber"
+									placeholder="{i18n>placeholderEmployees}" />
+								<Label text="{i18n>yield}" />
+								<Input
+									enabled="{view>/enableYield}"
+									value="{newObject>/ConfirmationYieldQuantity}" 
+									type="Number"
+									class="sapUiSmallMarginBottom"
+									placeholder="Enter a Number ..." />
+								<Input 
+									enabled="{view>/enableYield}"
+									showValueHelp="true"
+									valueHelpOnly="true"
+									value="{newObject>/OperationUnit}" 
+									valueHelpRequest=".onUnitValueHelpRequested">
+									<layoutData>
+										<f:ColumnElementData cellsSmall="3" cellsLarge="2" />
+									</layoutData>
+								</Input>
+								<Label text="{i18n>scrap}" />
+								<Input
+									enabled="{view>/editMode}"
+									type="Number"
+									value="{newObject>/ConfirmationScrapQuantity}" 
+									class="sapUiSmallMarginBottom"
+									placeholder="Enter a Number ..." />
+								<Label text="{i18n>reworkQty}" />
+								<Input
+									enabled="{view>/editMode}"
+									type="Number"
+									value="{newObject>/ConfirmationReworkQuantity}" 
+									class="sapUiSmallMarginBottom"
+									placeholder="Enter a Number ..." />
+								<Label text="{i18n>reason}" />
+								<Select showSecondaryValues="true"  
+									enabled="{view>/editMode}"
+									forceSelection="false"
+									name="reason"
+									change="onChangeReason" 
+									items="{
+										patht='reasons>/'
+									}">
+									<core:ListItem key="{reasons>ReasonCode}" text="{reasons>ReasonText}"/>
+								</Select>
+							</f:content>
+						</f:SimpleForm>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection titleUppercase="false" showTitle="false" visible="{view>/lastOperation}" fieldGroupIds="table">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection title="{i18n>finishTimeTabTable}" titleUppercase="false">
+						<Table
+							id="table"
+							headerText="{i18n>tableHeading}"
+							items="{
+								path:'orderItems>/',
+								sorter: {
+									path: 'OriginalOrder',
+									descending: false
+								}
+							}" >
+							<columns>
+								<Column>
+									<header>
+										<Text text="{i18n>orderColumnHeading}" />
+									</header>
+								</Column>
+								<Column hAlign="Center">
+									<header>
+										<Text text="{i18n>yieldColumnHeading}" />
+									</header>
+								</Column>
+								<Column hAlign="Center"
+									minScreenWidth="Tablet"
+									demandPopin="true">
+									<header>
+										<Text text="{i18n>confirmedQtyColumnHeading}" />
+									</header>
+								</Column>									
+								<Column 
+									hAlign="End">
+									<header>
+										<Text text="{i18n>totalColumnHeading}" />
+									</header>
+								</Column>
+							</columns>
+							<ColumnListItem>
+								<Text text="{orderItems>OriginalOrder}" />
+								<Input type="Number" 
+									liveChange="onTableLiveChange"
+									value="{orderItems>Yield}"/>
+								<ObjectNumber
+									number="{orderItems>ConfirmedQty}" 
+									unit="{orderItems>ConfirmedUnit}"
+									state="{
+										parts: [
+											{path: 'orderItems>ConfirmedQty'},
+											{path: 'orderItems>TotalQty'}
+										],
+										formatter: '.formatter.setState'
+									}"/>
+								<ObjectNumber
+										number="{orderItems>TotalQty}"
+										unit="{orderItems>TotalUnit}" />
+							</ColumnListItem>
+						</Table>
+					</uxap:ObjectPageSubSection >
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
+</core:FragmentDefinition>

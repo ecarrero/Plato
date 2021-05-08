@@ -1,0 +1,51 @@
+{
+  "name": "combinedorderstimes",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@ui5/cli": "^2.8.0",
+    "eslint": "7.10.0",
+    "rimraf": "^3.0.2",
+    "ui5-middleware-livereload": "0.4.3",
+    "ui5-middleware-proxy-basicauth": "^0.0.6",
+    "ui5-middleware-servestatic": "^0.3.3",
+    "ui5-middleware-simpleproxy": "^0.6.1",
+    "ui5-task-flatten-library": "*",
+    "ui5-task-nwabap-deployer": "1.0.15"
+  },
+  "scripts": {
+    "deploy": "npx nwabap upload",
+    "lint": "eslint webapp",
+    "start": "ui5 serve --open flpSandbox.html",
+    "startCDN": "ui5 serve --open test/flpSandboxCDN.html",
+    "build": "rimraf dist && ui5 build -a",
+    "test": "ui5 serve --open test/unit/unitTests.qunit.html",
+    "build-all": "ui5 build --all"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-proxy-basicauth",
+      "ui5-middleware-servestatic",
+      "ui5-middleware-livereload",
+      "ui5-task-nwabap-deployer",
+      "ui5-middleware-simpleproxy",
+      "ui5-task-flatten-library",
+      "moment"
+    ]
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "browser-sync": "^2.26.13",
+    "moment": "^2.29.1",
+    "node-openssl-cert": "^0.1.22",
+    "ui5-task-flatten-library": "^0.2.0"
+  }
+}

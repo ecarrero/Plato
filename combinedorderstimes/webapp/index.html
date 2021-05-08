@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Plato</title>
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/1.71.16/resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-xx-bindingSyntax="complex"
+			data-sap-ui-resourceroots='{"com.plato.combinedorderstimes": "./"}'
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-async="true"
+			data-sap-ui-frameOptions="trusted">
+		</script>
+		<script type="text/javascript">
+    		sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					appWidthLimited: false,
+					app: new sap.ui.core.ComponentContainer({
+						height: "100%",
+						width: "100%",
+						name: "com.plato.combinedorderstimes",
+						propagateModel: true
+					})	
+				}).placeAt("content");
+	        });
+		</script>		
+	</head>
+	<body class="sapUiBody sapUiSizeCompact" id="content">
+	</body>
+</html>

@@ -1,0 +1,25 @@
+{
+	"cols" : [
+		{
+			"label": "",
+			"template" : "Category",
+			"key" : "0010"
+		}, {
+			"label": "",
+			"template" : "WorkCenter",
+			"key" : "0020"
+		}, {
+			"label": "",
+			"template" : "WorkCenterText",
+			"key" : "0030"
+		}, {
+			"label": "",
+			"template" : "Plant",
+			"key" : "0040"
+		}, {
+			"label": "",
+			"template" : "PlantName",
+			"key" : "0050"
+		}
+	]
+}

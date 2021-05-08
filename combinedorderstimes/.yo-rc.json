@@ -1,0 +1,17 @@
+{
+  "generator-app-fiori": {
+    "projectname": "combinedorderstimes",
+    "name_space": "com.plato",
+    "name_space_slash": "com/plato",
+    "isCDN": true,
+    "UI5Version": "1.71.26",
+    "ui5Path": "",
+    "ODataConf": {
+      "ODataServer": "https://launchpad-dev.platogroup.eu/",
+      "serverClient": 100,
+      "userID": "encar",
+      "password": "ecarrero200",
+      "ODataServiceURL": "/sap/opu/odata/sap/ZCO_RU_CONFIRMATION_SRV"
+    }
+  }
+}

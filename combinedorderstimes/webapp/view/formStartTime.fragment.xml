@@ -1,0 +1,147 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:smartform="sap.ui.comp.smartform" 
+	xmlns:smartfield="sap.ui.comp.smartfield"
+	xmlns:l="sap.ui.layout">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChange354wide"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{i18n>startTime}"
+			labelSpanXL="4"
+			labelSpanL="4"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="1"
+			emptySpanL="1"
+			emptySpanM="1"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>	
+				<Label text="{i18n>orderConfirmation}" />
+				<Input
+					id="orderConfirmation"
+					type="Number"
+					required="true"
+					placeholder="{i18n>orderConfirmationPlaceholder}"
+					showSuggestion="true"	
+					value="{newObject>/ConfirmationGroup}"			
+					suggest="handleOrderSuggestion"
+					liveChange="onLiveChange"
+					startSuggestion="3"
+					suggestionItemSelected="onSelectedOrder"
+					showTableSuggestionValueHelp="false"
+					suggestionRows="{orderConfirmation>/Z_C_ORDERCONFIRMATION}">
+					<suggestionColumns>
+						<Column
+							hAlign="Begin"
+							popinDisplay="Inline"
+							demandPopin="true">
+							<Label text="{i18n>columnConfirmationGrp}"/>
+						</Column>
+						<Column
+							hAlign="End"
+							popinDisplay="Inline"
+							demandPopin="true">
+							<Label text="{i18n>columnOrderID}"/>
+						</Column>
+						<Column
+							hAlign="End"
+							popinDisplay="Inline"
+							demandPopin="true">
+							<Label text="{i18n>columnOrderOperation}"/>
+						</Column>
+					</suggestionColumns>
+					<suggestionRows>
+						<ColumnListItem>
+							<cells>
+								<Label text="{orderConfirmation>ConfirmationGroup}"/>
+								<Label text="{orderConfirmation>OrderID}"/>
+								<Label text="{orderConfirmation>Operation}"/>
+							</cells>
+						</ColumnListItem>
+					</suggestionRows>
+				</Input>
+				<Label text="{i18n>timeEvent}" />
+				<DateTimePicker
+					id="dtpStart"
+					required="true"
+					enabled="{view>/editMode}"
+					name="DTPStart"
+					placeholder="{i18n>placeholderDatePicker}"
+					secondsStep="15"
+					value="{ 
+						parts: [
+							{path: 'newObject>/ConfirmedProcessingStartDate'},
+							{path: 'newObject>/ConfirmedProcessingStartTime'}
+						],
+						formatter: '.formatter.setDateTime'
+					}"
+					displayFormat="long"
+					valueFormat="long"
+					change="onChangeDate"
+					class="sapUiSmallMarginBottom"/>
+				<!-- <Label text="{i18n>employees}" />
+				<Input
+					enabled="{view>/editMode}"
+					value="{newObject>/NumberOfEmployees}" 
+					type="Number"
+					class="sapUiSmallMarginBottom"
+					maxLength="8"
+					placeholder="{i18n>placeholderEmployees}" /> -->
+				<Label text="{i18n>pernr}" />
+				<Input
+					id="pernr"
+					type="Text"
+					enabled="{view>/editMode}"
+					placeholder="Enter Personnel Number..."
+					value="{newObject>/Personnel}"
+					showSuggestion="true"
+					suggest="handlePernrSuggestion"
+					showTableSuggestionValueHelp="false"
+					suggestionRows="{personnelNumber>/Z_C_NAME_BY_PERNR}">
+					<suggestionColumns>
+						<Column
+							hAlign="Begin"
+							popinDisplay="Inline"
+							demandPopin="true">
+							<Label text="{i18n>columnPernr}"/>
+						</Column>
+						<Column
+							hAlign="Center"
+							popinDisplay="Inline"
+							demandPopin="true"
+							minScreenWidth="Tablet">
+							<Label text="{i18n>columnFullName}"/>
+						</Column>
+					</suggestionColumns>
+					<suggestionRows>
+						<ColumnListItem>
+							<cells>
+								<Label text="{personnelNumber>Employee}"/>
+								<Label text="{personnelNumber>EmployeeFullName}"/>
+							</cells>
+						</ColumnListItem>
+					</suggestionRows>
+				</Input>
+				 <Label text="{i18n>workCenter}" />
+				<Input
+					id="workCenter"
+					enabled="false"
+					showValueHelp="true"
+					valueHelpOnly="true"
+					value="{= ${newObject>/WorkCenter} === undefined ? '' : ${newObject>/WorkCenter} + '/' + ${newObject>/Plant}}"
+					valueHelpRequest=".onValueHelpRequested">
+					<core:Item key="{workCenter>/WorkCenter}" text="{workCenter>/Plant}" />
+				</Input>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>

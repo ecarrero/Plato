@@ -1,0 +1,58 @@
+<mvc:View
+	controllerName="com.plato.combinedorderstimes.controller.Main"
+	xmlns="sap.m"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+
+	<SplitContainer id="SimpleFormSplitscreen" initialDetail="startSetup" initialMaster="master" detailNavigate="onDetailPagesNav">
+		<detailPages>
+			<Page id="startSetup" title="{i18n>titleDetail}" class="sapUiStdPage" fieldGroupIds="DTPStartSetup">
+				<content>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.formStartSetup" id="fragmentStartSetup" type="XML"/>
+				</content>
+				<footer>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.pageFooter" id="fragmentFooter" type="XML"/>
+				</footer>
+			</Page>
+			<Page id="finishSetup" title="{i18n>titleDetail}" class="sapUiStdPage" fieldGroupIds="DTPFinishSetup">
+				<content>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.formFinishSetup" id="fragmentFinishSetup" type="XML"/>
+				</content>
+				<footer>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.pageFooter" id="fragmentFooter" type="XML"/>
+				</footer>
+			</Page>
+			<Page id="start" title="{i18n>titleDetail}" class="sapUiStdPage" fieldGroupIds="DTPStart">
+				<content>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.formStartTime" id="fragmentStart" type="XML"/>
+				</content>
+				<footer>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.pageFooter" id="fragmentFooter" type="XML"/>
+				</footer>
+			</Page>
+			<Page id="finish" title="{i18n>titleDetail}" class="sapUiStdPage" fieldGroupIds="DTPFinish">
+				<content>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.formFinishTime" id="fragmentFinish" type="XML"/>
+				</content>
+				<footer>
+					<core:Fragment fragmentName="com.plato.combinedorderstimes.view.pageFooter" id="fragmentFooter" type="XML"/>
+				</footer>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page id="master" title="{i18n>titleMaster}" icon="sap-icon://action" class="sapUiStdPage" backgroundDesign= "List">
+				<content>
+					<List itemPress="onListItemPress">
+						<items>
+							<StandardListItem title="{i18n>startSetup}" type="Active" custom:to="startSetup"/>
+							<StandardListItem title="{i18n>finishSetup}" type="Active" custom:to="finishSetup"/>
+							<StandardListItem title="{i18n>startTime}" type="Active" custom:to="start"/>
+							<StandardListItem title="{i18n>finishTime}" type="Active" custom:to="finish"/>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</masterPages>
+	</SplitContainer>
+</mvc:View>

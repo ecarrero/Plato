@@ -1,0 +1,15 @@
+<core:FragmentDefinition 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+    <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button type="Accept" text="{i18n>btnCreate}" press="onCreate" 
+            enabled="{= ${view>/finishView} 
+                ? ${view>/enableConfirmation} &amp;&amp; ${view>/enableFinishDate}
+                : ${view>/enableConfirmation} &amp;&amp; ${view>/enableStartDate}}">
+            <layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+        </Button>
+    </OverflowToolbar>
+</core:FragmentDefinition>

@@ -1,0 +1,13 @@
+{
+	"cols" : [
+		{
+			"label": "",
+			"template" : "UnitOfMeasure",
+			"key" : "1010"
+		}, {
+			"label": "",
+			"template" : "Text",
+			"key" : "1020"
+		}
+	]
+}
