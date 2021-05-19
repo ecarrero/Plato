@@ -1,0 +1,25 @@
+{
+  "ports.excludeExposeNotification": {
+    "ports": [
+      6005
+    ]
+  },
+  "Adaptation Project.componentname": "s2p.mm.pur.qtn.maintains1",
+  "Adaptation Project.safeMode": false,
+  "Adaptation Project.appvariant": "zmm_qtn_mains1",
+  "Adaptation Project.layer": "CUSTOMER_BASE",
+  "Adaptation Project.sourceSystem": "Plato",
+  "Adaptation Project.isOVPApp": false,
+  "Adaptation Project.isFioriElement": true,
+  "Adaptation Project.destinations": [
+    {
+      "name": "Plato",
+      "url": "http://plato:8443",
+      "proxyType": "OnPremise"
+    },
+    {
+      "name": "sapui5",
+      "url": "http://sapui5.hana.ondemand.com/1.71.19"
+    }
+  ]
+}
