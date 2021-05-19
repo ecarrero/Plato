@@ -31,7 +31,7 @@
 	"dependentSelector": {},
 	"validAppVersions": {
 		"creation": "7.0.8",
-		"from": "7.0.8",
+		"from": "7.0.2",
 		"to": "7.0.8"
 	},
 	"jsOnly": false,
